@@ -1,4 +1,7 @@
-﻿namespace backendmovix.Reservations.Domain.Model.Aggregate;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace backendmovix.Reservations.Domain.Model.Aggregate;
 
 public class Reservation
 {

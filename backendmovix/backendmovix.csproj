@@ -29,4 +29,10 @@
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Reservations\Infrastructure\" />
+      <Folder Include="Reservations\Interfaces\" />
+      <Folder Include="Shared\" />
+    </ItemGroup>
+
 </Project>
