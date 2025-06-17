@@ -32,7 +32,6 @@
 
     <ItemGroup>
       <Folder Include="Reservations\Infrastructure\" />
-      <Folder Include="Shared\Infrastructure\Interfaces\ASP\Configuration\Extensions\" />
       <Folder Include="Shared\Infrastructure\Persistence\" />
     </ItemGroup>
 

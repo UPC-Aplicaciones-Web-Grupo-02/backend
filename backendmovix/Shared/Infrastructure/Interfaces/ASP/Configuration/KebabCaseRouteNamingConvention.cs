@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
+﻿using backendmovix.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace backendmovix.Shared.Infrastructure.Interfaces.ASP.Configuration;
 
