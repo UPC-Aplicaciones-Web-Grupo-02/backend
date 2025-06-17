@@ -1,4 +1,7 @@
-﻿namespace backendmovix.Suscriptions.Domain.Model.Aggregate;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace backendmovix.Suscriptions.Domain.Model.Aggregate;
 
 public class Suscription
 {

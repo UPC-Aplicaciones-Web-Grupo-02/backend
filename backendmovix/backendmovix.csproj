@@ -32,7 +32,7 @@
 
     <ItemGroup>
       <Folder Include="Reservations\Infrastructure\" />
-      <Folder Include="Shared\" />
+      <Folder Include="Shared\Infrastructure\" />
     </ItemGroup>
 
 </Project>
