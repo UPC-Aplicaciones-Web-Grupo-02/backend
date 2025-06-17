@@ -1,0 +1,6 @@
+@backendmovix_HostAddress = http://localhost:5134
+
+GET {{backendmovix_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
