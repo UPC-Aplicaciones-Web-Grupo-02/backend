@@ -32,7 +32,6 @@
 
     <ItemGroup>
       <Folder Include="Reservations\Infrastructure\" />
-      <Folder Include="Suscriptions\Interfaces\" />
     </ItemGroup>
 
 </Project>
