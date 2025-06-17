@@ -1,4 +1,6 @@
 ﻿using backendmovix.Reservations.Domain.Model.Aggregate;
+using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace backendmovix.Reservations.Applications.Internal.Service;
 

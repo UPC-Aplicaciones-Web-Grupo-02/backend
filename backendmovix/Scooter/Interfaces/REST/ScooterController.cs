@@ -1,9 +1,9 @@
-﻿using backend01.Scooter.Application.Internal.Service;
-using backend01.Scooter.Interfaces.REST.Resources;
-using backend01.Scooter.Interfaces.REST.Transform;
+using backendmovix.Scooter.Application.Internal.Service;
+using backendmovix.Scooter.Interfaces.REST.Resources;
+using backendmovix.Scooter.Interfaces.REST.Transform;
 using Microsoft.AspNetCore.Mvc;
 
-namespace backend01.Scooter.Interfaces.REST
+namespace backendmovix.Scooter.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]

@@ -1,4 +1,4 @@
-﻿namespace backend01.Scooter.Domain.Model.Aggregate;
+﻿namespace backendmovix.Scooter.Domain.Model.Aggregate;
 
 public class Districts
 {

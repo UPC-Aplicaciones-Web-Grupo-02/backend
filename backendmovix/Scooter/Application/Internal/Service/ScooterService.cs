@@ -1,8 +1,8 @@
-﻿using backend01.Scooter.Interfaces.REST.Resources;
-using backend01.Shared.Infrastructure.Persistence.EFC.Configuration;
+﻿using backendmovix.Scooter.Interfaces.REST.Resources;
+using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend01.Scooter.Application.Internal.Service;
+namespace backendmovix.Scooter.Application.Internal.Service;
 
 public class ScooterService : IScooterService
 {

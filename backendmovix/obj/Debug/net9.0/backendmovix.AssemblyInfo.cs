@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("backendmovix")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02e4eeae7ff430bf20c19826345858f309dbb025")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eff2d1ec092ea5058ba1bc6d00fa2251d441ebed")]
 [assembly: System.Reflection.AssemblyProductAttribute("backendmovix")]
 [assembly: System.Reflection.AssemblyTitleAttribute("backendmovix")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

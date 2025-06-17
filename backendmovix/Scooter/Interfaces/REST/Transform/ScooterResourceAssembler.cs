@@ -1,6 +1,6 @@
-﻿using backend01.Scooter.Interfaces.REST.Resources;
+﻿using backendmovix.Scooter.Interfaces.REST.Resources;
 
-namespace backend01.Scooter.Interfaces.REST.Transform;
+namespace backendmovix.Scooter.Interfaces.REST.Transform;
 
 public static class ScooterResourceAssembler
 {

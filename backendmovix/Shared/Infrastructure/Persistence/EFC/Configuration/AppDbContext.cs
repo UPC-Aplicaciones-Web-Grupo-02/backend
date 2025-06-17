@@ -1,6 +1,8 @@
-﻿using backend01.Scooter.Domain.Model.Aggregate;
+﻿using backendmovix.Scooter.Domain.Model.Aggregate;
 using backendmovix.Reservations.Domain.Model.Aggregate;
+using backendmovix.Scooter.Domain.Model.Aggregate;
 using backendmovix.Suscriptions.Domain.Model.Aggregate;
+using backendmovix.Users.Domain.Model.Aggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -82,21 +84,6 @@ public class AppDbContext : DbContext
             new UserRole { Id = 3, Role = "Universitario" }
         );
         
-        /*
-        builder.Entity<User>().HasData(
-            new User
-            {
-                Id = "1",
-                Name = "Néstor Velarde",
-                Phone = "987654321",
-                Dni = "87654321",
-                Email = "velarde@gmail.com",
-                Password = "654321",
-                Photo = "https://i.ibb.co/8rdm6xC/Logo-Movi-Tech.png",
-                Address = "Av. Metropolitana, Lima",
-                RoleId = 3
-            }
-        );*/
         // Configuración TypeSuscription
         builder.Entity<TypeSuscription>().HasKey(t => t.Id);
         builder.Entity<TypeSuscription>().Property(t => t.Name).IsRequired().HasMaxLength(100);

@@ -1,4 +1,4 @@
-﻿namespace backend01.Scooter.Interfaces.REST.Resources;
+﻿namespace backendmovix.Scooter.Interfaces.REST.Resources;
 
 public class BrandResource
 {

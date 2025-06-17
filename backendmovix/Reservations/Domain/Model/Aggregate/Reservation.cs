@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using backendmovix.Suscriptions.Domain.Model.Aggregate;
+using backendmovix.Users.Domain.Model.Aggregate;
 
 namespace backendmovix.Reservations.Domain.Model.Aggregate;
 

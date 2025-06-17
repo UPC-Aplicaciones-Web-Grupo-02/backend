@@ -1,6 +1,6 @@
-﻿using backend01.Scooter.Interfaces.REST.Resources;
+﻿using backendmovix.Scooter.Interfaces.REST.Resources;
 
-namespace backend01.Scooter.Application.Internal.Service;
+namespace backendmovix.Scooter.Application.Internal.Service;
 
 public interface IScooterService
 {

@@ -1,10 +1,10 @@
-﻿using backend01.Scooter.Interfaces.REST.Resources;
-using backend01.Shared.Infrastructure.Persistence.EFC.Configuration;
+using backendmovix.Scooter.Interfaces.REST.Resources;
+using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend01.Scooter.Interfaces.REST
+namespace backendmovix.Scooter.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]

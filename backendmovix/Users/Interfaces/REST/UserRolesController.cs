@@ -1,30 +1,33 @@
-using backendmovix.Scooter.Interfaces.REST.Resources;
 using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace backendmovix.Scooter.Interfaces.REST
+namespace backendmovix.Users.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class BrandsController : ControllerBase
+    public class UserRolesController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public BrandsController(AppDbContext context) => _context = context;
+
+        public UserRolesController(AppDbContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var brands = await _context.Brands
-                .Select(b => new BrandResource
+            var roles = await _context.UserRoles
+                .Select(r => new
                 {
-                    Id = b.Id,
-                    Name = b.Name
+                    Id = r.Id,
+                    Role = r.Role
                 })
                 .ToListAsync();
 
-            return Ok(brands);
+            return Ok(roles);
         }
     }
 }
