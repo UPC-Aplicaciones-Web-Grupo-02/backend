@@ -1,0 +1,8 @@
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.csproj.AssemblyReference.cache
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.GeneratedMSBuildEditorConfig.editorconfig
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.AssemblyInfoInputs.cache
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.AssemblyInfo.cs
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.csproj.CoreCompileInputs.cache
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.MvcApplicationPartsAssemblyInfo.cs
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.MvcApplicationPartsAssemblyInfo.cache
+D:\java\backendmovix\backendmovix\obj\Debug\net9.0\backendmovix.sourcelink.json

@@ -1,6 +1,8 @@
-﻿namespace backendmovix.Reservations.Applications.Internal.Service;
+﻿using backendmovix.Reservations.Domain.Model.Aggregate;
 
-public class ReservationService 
+namespace backendmovix.Reservations.Applications.Internal.Service;
+
+public class ReservationService : IReservationService
 {
     private readonly AppDbContext _context;
 
