@@ -8,3 +8,5 @@ public class ReservationResource
     public int UserId { get; set; }
     public int SuscriptionId { get; set; }
 }
+
+
