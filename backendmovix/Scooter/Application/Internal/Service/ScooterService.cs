@@ -56,4 +56,20 @@ public class ScooterService : IScooterService
             await _context.SaveChangesAsync();
         }
     }
+    
+    public async Task<Domain.Model.Aggregate.Scooter?> UpdateAsync(int id, CreateScooterResource resource)
+    {
+        var scooter = await _context.Set<Domain.Model.Aggregate.Scooter>().FindAsync(id);
+        if (scooter == null) return null;
+
+        scooter.Name = resource.Name;
+        scooter.Description = resource.Description;
+        scooter.Image = resource.Image;
+        scooter.BrandId = resource.BrandId;
+        scooter.ModelId = resource.ModelId;
+        scooter.DistrictId = resource.DistrictId;
+
+        await _context.SaveChangesAsync();
+        return scooter;
+    }
 }

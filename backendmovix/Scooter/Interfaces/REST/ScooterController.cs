@@ -32,6 +32,23 @@ namespace backendmovix.Scooter.Interfaces.REST
             return Ok(ScooterResourceAssembler.ToResource(scooter));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateScooterResource resource)
+        {
+            if (resource == null) return BadRequest("Datos inválidos.");
+            var scooter = await _scooterService.CreateAsync(resource);
+            return CreatedAtAction(nameof(GetById), new { id = scooter.Id }, ScooterResourceAssembler.ToResource(scooter));
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] CreateScooterResource resource)
+        {
+            if (resource == null) return BadRequest("Datos inválidos.");
+            var updated = await _scooterService.UpdateAsync(id, resource);
+            if (updated == null) return NotFound();
+            return NoContent();
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
