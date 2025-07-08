@@ -1,12 +1,14 @@
 using backendmovix.Scooter.Application.Internal.Service;
 using backendmovix.Scooter.Interfaces.REST.Resources;
 using backendmovix.Scooter.Interfaces.REST.Transform;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backendmovix.Scooter.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize] 
     public class ScooterController : ControllerBase
     {
         private readonly IScooterService _scooterService;

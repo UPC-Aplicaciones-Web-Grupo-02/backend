@@ -2,6 +2,7 @@ using backendmovix.Reservations.Applications.Internal.Service;
 using backendmovix.Reservations.Domain.Model.Aggregate;
 using backendmovix.Reservations.Interfaces.REST.Resources;
 using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace backendmovix.Reservations.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize] 
     public class ReservationsController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -41,19 +43,19 @@ namespace backendmovix.Reservations.Interfaces.REST
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // Obtener la suscripción y su tipo para determinar el mensaje
             var suscription = await _context.Suscriptions
                 .Include(s => s.Type)
                 .FirstOrDefaultAsync(s => s.Id == resource.SuscriptionId);
 
             if (suscription == null)
-                return BadRequest("Suscription not found");
+                return BadRequest("Suscripción no encontrada.");
 
             string cantDate = suscription.Type.Name switch
             {
                 "Plan Semanal" => "Esta reserva es válida por 7 días (Plan Semanal).",
                 "Plan Mensual" => "Esta reserva es válida por 30 días (Plan Mensual).",
-                "Plan Trimestral" => "Esta reserva es válida por 90 días (Plan Trimestral)."
+                "Plan Trimestral" => "Esta reserva es válida por 90 días (Plan Trimestral).",
+                _ => "Reserva válida según el plan seleccionado."
             };
 
             var reservation = new Reservation

@@ -1,6 +1,6 @@
 using backendmovix.Scooter.Interfaces.REST.Resources;
 using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +8,7 @@ namespace backendmovix.Scooter.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize] 
     public class BrandsController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -26,7 +27,7 @@ namespace backendmovix.Scooter.Interfaces.REST
 
             return Ok(brands);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

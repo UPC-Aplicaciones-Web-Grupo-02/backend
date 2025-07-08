@@ -1,7 +1,7 @@
 using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
 using backendmovix.Users.Domain.Model.Aggregate;
 using backendmovix.Users.Interfaces.REST.Resources;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +9,7 @@ namespace backendmovix.Users.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize] 
     public class UserRolesController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -43,7 +44,7 @@ namespace backendmovix.Users.Interfaces.REST
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetAll), new { id = role.Id }, role);
         }
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateUserRoleResource resource)
         {
@@ -65,7 +66,6 @@ namespace backendmovix.Users.Interfaces.REST
             var role = await _context.UserRoles.FindAsync(id);
             if (role == null)
                 return NotFound();
-
 
             var hasUsers = await _context.Users.AnyAsync(u => u.RoleId == id);
             if (hasUsers)

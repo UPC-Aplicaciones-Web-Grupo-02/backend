@@ -2,8 +2,11 @@ using backendmovix.Users.Application.Internal.Service;
 using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
 using backendmovix.Users.Domain.Model.Aggregate;
 using backendmovix.Users.Interfaces.REST.Resources;
+using backendmovix.Shared.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace backendmovix.Users.Interfaces.REST
 {
@@ -13,14 +16,16 @@ namespace backendmovix.Users.Interfaces.REST
     {
         private readonly AppDbContext _context;
         private readonly IUserService _userService;
+        private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-        public UsersController(AppDbContext context, IUserService userService)
+        public UsersController(AppDbContext context, IUserService userService, IJwtTokenGenerator jwtTokenGenerator)
         {
             _context = context;
             _userService = userService;
+            _jwtTokenGenerator = jwtTokenGenerator;
         }
-
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var users = await _context.Users
@@ -39,8 +44,8 @@ namespace backendmovix.Users.Interfaces.REST
 
             return Ok(users);
         }
-        
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
             var user = await _context.Users
@@ -65,6 +70,7 @@ namespace backendmovix.Users.Interfaces.REST
         }
         
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             if (!ModelState.IsValid)
@@ -72,10 +78,13 @@ namespace backendmovix.Users.Interfaces.REST
 
             var user = await _userService.AuthenticateAsync(request.Email, request.Password);
             if (user == null)
-                return Unauthorized();
+                return Unauthorized(new { message = "Credenciales inválidas" });
+
+            var token = _jwtTokenGenerator.GenerateToken(user);
 
             return Ok(new
             {
+                token,
                 user.Id,
                 user.Name,
                 user.Email,
@@ -84,13 +93,21 @@ namespace backendmovix.Users.Interfaces.REST
             });
         }
         
+        [HttpGet("me")]
+        [Authorize]
+        public IActionResult Me()
+        {
+            var email = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? "desconocido";
+            return Ok(new { message = $"Estás autenticado como {email}" });
+        }
+        
         [HttpPost]
+        [AllowAnonymous] 
         public async Task<IActionResult> Create([FromBody] CreateUserResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // Asignar Id manualmente
             var maxId = _context.Users.Any() ? _context.Users.Max(u => u.Id) : 0;
 
             var user = new User
@@ -109,7 +126,6 @@ namespace backendmovix.Users.Interfaces.REST
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            // Devuelve solo los datos relevantes (sin id ni role)
             return Ok(new
             {
                 user.Name,
@@ -121,8 +137,9 @@ namespace backendmovix.Users.Interfaces.REST
                 user.RoleId
             });
         }
-
+        
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -134,5 +151,11 @@ namespace backendmovix.Users.Interfaces.REST
 
             return NoContent();
         }
+    }
+
+    public class LoginRequest
+    {
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
     }
 }

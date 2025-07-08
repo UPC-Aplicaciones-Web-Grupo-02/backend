@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\java\\backendmovix\\backendmovix\\backendmovix.csproj": {}
+    "C:\\Users\\Alonso\\Desktop\\BACKEND\\backendmovix\\backendmovix.csproj": {}
   },
   "projects": {
-    "D:\\java\\backendmovix\\backendmovix\\backendmovix.csproj": {
+    "C:\\Users\\Alonso\\Desktop\\BACKEND\\backendmovix\\backendmovix.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\java\\backendmovix\\backendmovix\\backendmovix.csproj",
+        "projectUniqueName": "C:\\Users\\Alonso\\Desktop\\BACKEND\\backendmovix\\backendmovix.csproj",
         "projectName": "backendmovix",
-        "projectPath": "D:\\java\\backendmovix\\backendmovix\\backendmovix.csproj",
-        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "D:\\java\\backendmovix\\backendmovix\\obj\\",
+        "projectPath": "C:\\Users\\Alonso\\Desktop\\BACKEND\\backendmovix\\backendmovix.csproj",
+        "packagesPath": "C:\\Users\\Alonso\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alonso\\Desktop\\BACKEND\\backendmovix\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Alonso\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[2.14.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.0-preview.3.24172.9, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.3, )"
@@ -94,10 +98,6 @@
               "target": "Package",
               "version": "[9.0.6, )"
             },
-            "Microsoft.IdentityModel.Tokens": {
-              "target": "Package",
-              "version": "[8.12.0, )"
-            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -113,6 +113,10 @@
             "Swashbuckle.AspNetCore.Annotations": {
               "target": "Package",
               "version": "[9.0.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.12.1, )"
             }
           },
           "imports": [
@@ -134,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Alonso\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

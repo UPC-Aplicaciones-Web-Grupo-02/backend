@@ -1,7 +1,7 @@
 using backendmovix.Shared.Infrastructure.Persistence.EFC.Configuration;
 using backendmovix.Suscriptions.Domain.Model.Aggregate;
 using backendmovix.Suscriptions.Interfaces.REST.Resources;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +9,7 @@ namespace backendmovix.Suscriptions.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize] 
     public class SuscriptionsController : ControllerBase
     {
         private readonly AppDbContext _context;

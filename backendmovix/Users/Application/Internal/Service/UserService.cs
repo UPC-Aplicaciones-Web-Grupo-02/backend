@@ -31,9 +31,34 @@ public class UserService : IUserService
 
     public async Task<User> AuthenticateAsync(string email, string password)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        var user = await _context.Users
+            .Include(u => u.Role) // si usas navegación a tabla de roles
+            .FirstOrDefaultAsync(u => u.Email == email);
+
         if (user == null) return null;
+
         if (!VerifyPassword(password, user.Password)) return null;
+
+        return user;
+    }
+
+    public async Task<User> RegisterAsync(string name, string email, string password)
+    {
+        var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        if (existingUser != null)
+            throw new InvalidOperationException("El correo ya está registrado.");
+
+        var user = new User
+        {
+            Name = name,
+            Email = email,
+            Password = HashPassword(password),
+            RoleId = 2 // puedes cambiarlo si tienes un rol predeterminado diferente
+        };
+
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
+
         return user;
     }
 }
