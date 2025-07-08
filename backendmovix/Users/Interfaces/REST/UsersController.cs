@@ -24,8 +24,9 @@ namespace backendmovix.Users.Interfaces.REST
             _userService = userService;
             _jwtTokenGenerator = jwtTokenGenerator;
         }
+        
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
             var users = await _context.Users
@@ -44,6 +45,7 @@ namespace backendmovix.Users.Interfaces.REST
 
             return Ok(users);
         }
+        
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> GetById(int id)
@@ -102,17 +104,20 @@ namespace backendmovix.Users.Interfaces.REST
         }
         
         [HttpPost]
-        [AllowAnonymous] 
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] CreateUserResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var maxId = _context.Users.Any() ? _context.Users.Max(u => u.Id) : 0;
+            // Validar que RoleId exista para evitar error FK
+            var roleExists = await _context.UserRoles.AnyAsync(r => r.Id == resource.RoleId);
+            if (!roleExists)
+                return BadRequest(new { message = "El RoleId asignado no existe." });
 
             var user = new User
             {
-                Id = maxId + 1,
+                // No asignar Id manualmente; dejar que la BD lo haga
                 Name = resource.Name,
                 Phone = resource.Phone,
                 Dni = resource.Dni,
@@ -128,6 +133,7 @@ namespace backendmovix.Users.Interfaces.REST
 
             return Ok(new
             {
+                user.Id,
                 user.Name,
                 user.Phone,
                 user.Dni,

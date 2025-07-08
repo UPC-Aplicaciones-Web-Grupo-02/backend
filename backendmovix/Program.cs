@@ -14,6 +14,20 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Define el nombre de la política CORS
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173") // <-- Cambia a la URL de tu frontend
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -54,7 +68,7 @@ builder.Services.AddSwaggerGen(c =>
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        Scheme = "bearer", 
+        Scheme = "bearer",
         BearerFormat = "JWT"
     });
 
@@ -96,16 +110,14 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
 app.UseRouting();
 
-app.UseCors(builder =>
-    builder.WithOrigins("http://localhost:5184")
-        .AllowAnyHeader()
-        .AllowAnyMethod());
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.Run();
 
+app.Run();

@@ -9,7 +9,7 @@ namespace backendmovix.Users.Interfaces.REST
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    [Authorize] 
+    [AllowAnonymous] 
     public class UserRolesController : ControllerBase
     {
         private readonly AppDbContext _context;
