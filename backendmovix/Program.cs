@@ -92,7 +92,8 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
     var userService = services.GetRequiredService<IUserService>();
-
+    
+// Inicializar la base de datos y agregar usuarios por defecto
     context.Database.EnsureCreated();
 
     if (!context.TypeSuscriptions.Any())
