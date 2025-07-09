@@ -7,4 +7,7 @@ public class SuscriptionResource
     public string Date { get; set; }
     public string Cvv { get; set; }
     public int TypeId { get; set; }
+    
+    public int UserId { get; set; }
+    
 }

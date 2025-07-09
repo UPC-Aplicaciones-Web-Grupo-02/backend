@@ -17,4 +17,7 @@ public class Suscription
     [Required]
     public int TypeId { get; set; }
     public TypeSuscription Type { get; set; }
+    
+    public int UserId { get; set; }
+    
 }
